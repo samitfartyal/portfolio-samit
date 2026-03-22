@@ -82,7 +82,24 @@ function ProjectCard({ project, onClick }) {
 
 function Projects() {
   const navigate = useNavigate()
-  const { projects, loading, error } = useProjects()
+  const { projects, loading } = useProjects()
+
+  if (loading) {
+    return (
+      <PageTransition>
+        <section className="relative min-h-screen flex items-center justify-center px-6">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] via-[#0f1729] to-[#0a0a0f]" />
+          <div className="relative glass-card inline-flex rounded-2xl p-10 items-center gap-4">
+            <svg className="w-8 h-8 animate-spin text-blue-400" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+            </svg>
+            <span className="text-gray-400">Loading projects...</span>
+          </div>
+        </section>
+      </PageTransition>
+    )
+  }
 
   return (
     <PageTransition>
@@ -106,29 +123,7 @@ function Projects() {
             </p>
           </motion.div>
 
-          {loading ? (
-            <motion.div variants={itemVariants} className="flex items-center justify-center py-24">
-              <div className="glass-card inline-flex rounded-2xl p-10 items-center gap-4">
-                <svg className="w-8 h-8 animate-spin text-blue-400" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                </svg>
-                <span className="text-gray-400">Loading projects...</span>
-              </div>
-            </motion.div>
-          ) : error ? (
-            <motion.div variants={itemVariants} className="text-center py-24">
-              <div className="glass-card inline-flex rounded-2xl p-10">
-                <div>
-                  <svg className="w-16 h-16 mx-auto mb-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                  </svg>
-                  <h3 className="text-xl font-bold text-white mb-2">Error Loading Projects</h3>
-                  <p className="text-gray-400 text-sm">{error}</p>
-                </div>
-              </div>
-            </motion.div>
-          ) : projects.length === 0 ? (
+          {projects.length === 0 ? (
             <motion.div variants={itemVariants} className="text-center py-24">
               <div className="glass-card inline-flex rounded-2xl p-10">
                 <div>

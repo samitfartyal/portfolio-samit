@@ -22,8 +22,8 @@ const itemVariants = {
 
 function ProjectShowcase() {
   const { id } = useParams()
-  const { projects, loading, error } = useProjects()
-  const project = projects.find(p => p.id === id)
+  const { projects, loading } = useProjects()
+  const project = projects.find(p => p.id === Number(id))
   const hasImage = project?.image?.startsWith("data:")
 
   if (loading) {
@@ -43,7 +43,7 @@ function ProjectShowcase() {
     )
   }
 
-  if (error || !project) {
+  if (!project) {
     return (
       <PageTransition>
         <section className="relative min-h-screen flex items-center justify-center px-6">
