@@ -55,8 +55,8 @@ function Contact() {
     <PageTransition>
       <section className="relative min-h-screen py-24 px-6">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] via-[#0f1729] to-[#0a0a0f]" />
-        <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/3 right-1/4 w-[300px] h-[300px] bg-purple-500/5 rounded-full blur-[120px]" />
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[150px]" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[150px]" />
 
         <motion.div
           variants={containerVariants}
@@ -65,9 +65,15 @@ function Contact() {
           className="relative max-w-6xl mx-auto"
         >
           <motion.div variants={itemVariants} className="mb-12">
-            <p className="text-blue-400 text-sm font-medium mb-2 tracking-wider uppercase">Contact</p>
+            <motion.p 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="text-blue-400 text-sm font-medium mb-2 tracking-wider uppercase"
+            >
+              Contact
+            </motion.p>
             <h1 className="section-heading mb-3">
-              Get In <span className="gradient-text">Touch</span>
+              Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">Touch</span>
             </h1>
             <p className="text-gray-400 text-base max-w-xl">
               Have a project in mind or want to collaborate? I'd love to hear from you.

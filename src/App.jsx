@@ -1,6 +1,7 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
+import ScrollProgress from './components/ScrollProgress'
 import Home from './pages/Home'
 import About from './pages/About'
 import Projects from './pages/Projects'
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0f]">
+      <ScrollProgress />
       <Navbar />
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
