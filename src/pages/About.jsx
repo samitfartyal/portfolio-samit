@@ -73,10 +73,21 @@ function About() {
           animate="visible"
           className="relative max-w-6xl mx-auto"
         >
-          <motion.div variants={itemVariants} className="mb-16">
-            <p className="text-blue-400 text-sm font-medium mb-2 tracking-wider uppercase">About Me</p>
+          <motion.div 
+            variants={itemVariants} 
+            className="mb-16"
+            viewport={{ once: true }}
+          >
+            <motion.p 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-blue-400 text-sm font-medium mb-2 tracking-wider uppercase"
+            >
+              About Me
+            </motion.p>
             <h1 className="section-heading mb-3">
-              Get to <span className="gradient-text">Know Me</span>
+              Get to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">Know Me</span>
             </h1>
             <p className="text-gray-400 text-base max-w-xl">
               A passionate developer building digital experiences that make a difference.
